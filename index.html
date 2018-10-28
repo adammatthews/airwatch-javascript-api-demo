@@ -1,0 +1,123 @@
+<html>
+	<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<script src="awapi.js"></script>
+
+	</head>
+
+	<body>
+
+        <header>
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Devices <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="profiles.html">Profiles</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Help</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+      <div class="container-fluid">
+      <div class="row">
+
+          <h1>Dashboard</h1>
+
+         </div>
+         <div class="row" style="height:30px;"> 
+             
+             
+            <input id="runBtn" type="button" value="Load Devices" class=" btn btn-primary"onclick="awcall();" />
+            <input id="refreshBtn" type="button" value="Refresh Devices" onclick="setDeviceData();" />
+
+
+          <!--   <input id="test" type="button" value="Populate OG's" onclick="ogPicker();" />-->
+            <select id="GID" onchange="displayOGDevices();"></select>
+
+ 				<!-- <span><p>Total Devices: </p><p id="DeviceTotal"></p> -->
+                <script type="text/javascript">
+                getTotalDeviceCount("DeviceTotal");
+                </script>
+              </span>
+
+              Filter By Enrollment Status: 
+             <select id="enrollStatus" onchange="displayOGDevices();">
+               <option value="0" default>All</option>
+               <option value="Enrolled">Enrolled</option>
+               <option value="Unenrolled">Unenrolled</option>
+               <option value="EnterpriseWipePending">Enterprise Wipe Pending</option>        
+             </select>
+
+              <p id="progress">Waiting</p>
+
+            <p id="out"></p>
+     
+    </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped" id="showData">
+              <!-- <thead>
+                <tr>
+                  <th>Friendly Name</th>
+                  <th>Location Group</th>
+                  <th>Last Seen</th>
+                  <th>Enrollment Status</th>
+                  <th>Platform</th>
+                  <th>Serial Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DeviceFriendlyName</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>Integer</td>
+                  <td>nec</td>
+                  <td>odio</td>
+                  <td>Praesent</td>
+                  <td>sit</td>
+                </tr>
+              </tbody> -->
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="http://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
