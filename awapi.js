@@ -12,6 +12,9 @@ const runbtn = document.getElementById('runBtn');
 const GIDList = document.getElementById('GID');
 const server = "https://ds137.awmdm.com/"; //include /
 
+const Auth = "Basic ChangeME";
+const awTenantCode = "aw-tenant-code";
+
 function init(){
  // loadHeaders(); //load platform headers
 }
@@ -36,11 +39,9 @@ function getLocalStorage(location){
 */
 function loadHeaders(){
 
-  
-
   let headers = new Headers();
-  headers.append('Authorization', 'Basic CHANGE'); //CHANGE THIS
-  headers.append('aw-tenant-code', 'CHANGE');
+  headers.append('Authorization', Auth); //CHANGE THIS
+  headers.append('aw-tenant-code', awTenantCode);
   headers.append('Accept', 'application/json');
   return headers;
 }
@@ -91,11 +92,7 @@ function getProfileData(){
   let headers = loadHeaders();
   callAPI(server + "api/mdm/profiles/search",headers,"profilesData"); //get main profiles list
 
-    callAPI(server + "api/mdm/profiles/4219",headers);
-
-
 }
-
 
 /*********** Devices Stuff ******************/
 /*

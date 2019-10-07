@@ -1,54 +1,40 @@
 <html>
 	<head>
-
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
-
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
-<title>UEM API Demo</title>
-<script src="awapi.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@clr/icons/clr-icons.min.css">
+    <title>UEM API Demo</title>
+    <script src="awapi.js"></script>
 	</head>
 
 	<body>
 
-<header class="header-6">
-    <div class="branding">
-        <a href="..." class="nav-link">
-            <clr-icon shape="vm-bug"></clr-icon>
-            <span class="title">Workspace ONE UEM Dashboard</span>
-        </a>
-    </div>
-    <div class="header-nav">
-        <a href="index.html" class="active nav-link"><span class="nav-text">Dashboard</span></a>
-        <a href="https://github.com/adammatthews/airwatch-javascript-api-demo" class="nav-link"><span class="nav-text">Help</span></a>
-    </div>
-    <div class="header-actions">
-        <a href="..." class="nav-link nav-icon" aria-label="settings">
-            <clr-icon shape="cog"></clr-icon>
-        </a>
-    </div>
-</header>
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">                
+                <clr-icon shape="blocks-group" class="is-solid"></clr-icon>
+                <span class="title">Workspace ONE UEM Dashboard</span>
+            </a>
+        </div>
+        <div class="header-nav">
+            <a href="index.html" class="active nav-link"><span class="nav-text">Dashboard</span></a>
+            <a href="https://github.com/adammatthews/airwatch-javascript-api-demo" target="_blank" class="nav-link"><span class="nav-text">Help</span></a>
+        </div>
+        <div class="header-actions">
+            <a href="..." class="nav-link nav-icon" aria-label="settings">
+                <clr-icon shape="cog"></clr-icon>
+            </a>
+        </div>
+    </header>
 
-
-
-      <div class="container-fluid">
-      <div class="row">
-
-          <h1>Dashboard</h1>
-
-         </div>
-         <div class="row" style="height:30px;"> 
-             
-             
-            <input id="runBtn" type="button" value="Load Devices" class=" btn btn-primary"onclick="awcall();" />
-            <input id="refreshBtn" type="button" value="Refresh Devices" onclick="setDeviceData();" />
-
-
+    <div class="container-fluid">
+      <h1>Dashboard</h1>
+    <div class="row" style="height:30px;"> 
+      <input id="runBtn" type="button" value="Load Devices" class="btn btn-primary"onclick="awcall();" />
+      <input id="refreshBtn" type="button" value="Refresh Devices" class="btn btn-outline" onclick="setDeviceData();" />
           <!--   <input id="test" type="button" value="Populate OG's" onclick="ogPicker();" />-->
             <select id="GID" onchange="displayOGDevices();"></select>
-
- 				<!-- <span><p>Total Devices: </p><p id="DeviceTotal"></p> -->
+   				<!-- <span><p>Total Devices: </p><p id="DeviceTotal"></p> -->
                 <script type="text/javascript">
                 getTotalDeviceCount("DeviceTotal");
                 </script>
@@ -62,58 +48,28 @@
                <option value="EnterpriseWipePending">Enterprise Wipe Pending</option>        
              </select>
 
-              <p id="progress">Waiting</p>
+              <p id="progress"><span class="label">Click Load Devices</span></p>
 
             <p id="out"></p>
      
     </div>
+    <div class="tableFixed">
+      <table class="table table-striped" id="showData">
+        <!--DATA -->
+      </table>
+    </div>
 
-          <div class="table-responsive">
-            <table class="table table-striped" id="showData">
-              <!-- <thead>
-                <tr>
-                  <th>Friendly Name</th>
-                  <th>Location Group</th>
-                  <th>Last Seen</th>
-                  <th>Enrollment Status</th>
-                  <th>Platform</th>
-                  <th>Serial Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>DeviceFriendlyName</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                  <td>sit</td>
-                </tr>
-              </tbody> -->
-            </table>
-          </div>
-        </main>
-      </div>
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="http://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="http://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    <!--CLARITY ICONS DEPENDENCY: CUSTOM ELEMENTS POLYFILL-->
+    <script src="https://unpkg.com/@webcomponents/custom-elements/custom-elements.min.js"></script>
+    <!--CLARITY ICONS API & ALL ICON SETS-->
+    <script src="https://unpkg.com/@clr/icons/clr-icons.min.js"></script>
+    
     </body>
 </html>
