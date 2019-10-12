@@ -215,6 +215,8 @@ function buildDeviceTable(filteredJson){
 
   //we have a list of devices now. 
   // - Help displaying in a table http://www.encodedna.com/javascript/populate-json-data-to-html-table-using-javascript.htm
+//16 - Platform - so can use this to display Icons
+
 
    // EXTRACT VALUE FOR HTML HEADER. 
         var col = [];
@@ -251,7 +253,17 @@ function buildDeviceTable(filteredJson){
             var tabCellLink = tr.insertCell(-1);
             var idObj = filteredJson[i][col[45]];
             if(idObj.Value !== null){
-                    tabCellLink.innerHTML = idObj.Value;
+              if(filteredJson[i][col[16]] == "Apple" || filteredJson[i][col[16]] == "AppleOsX"){
+                      tabCellLink.innerHTML = "<a href='"+server+"/AirWatch/#/AirWatch/Device/Details/Summary/"+idObj.Value+"' target='_blank'>Details</a><br/><img src='https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' width='30' />";
+              }
+              else if(filteredJson[i][col[16]] == "Android"){
+                      tabCellLink.innerHTML = "<a href='"+server+"/AirWatch/#/AirWatch/Device/Details/Summary/"+idObj.Value+"' target='_blank'>Details</a><br/><img src='https://cdn.onlinewebfonts.com/svg/img_106853.png' width='30' />";
+
+              }else{
+                      tabCellLink.innerHTML = "<a href='"+server+"/AirWatch/#/AirWatch/Device/Details/Summary/"+idObj.Value+"' target='_blank'>Details</a><br/><clr-icon shape='unknown-status' size='64'></clr-icon>";
+
+              }
+
             } //End UEM Link setup
 
 
