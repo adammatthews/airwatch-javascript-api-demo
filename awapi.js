@@ -10,10 +10,10 @@
 
 const runbtn = document.getElementById('runBtn');
 const GIDList = document.getElementById('GID');
-const server = "https://ds137.awmdm.com/"; //include /
+const server = "https://ds137.awmdm.com"; //include /
 
-const Auth = "Basic ChangeME";
-const awTenantCode = "aw-tenant-code";
+// const Auth = "Basic ChangeME";
+// const awTenantCode = "aw-tenant-code";
 
 function init(){
  // loadHeaders(); //load platform headers
@@ -232,6 +232,10 @@ function buildDeviceTable(filteredJson){
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);                   // TABLE ROW.
+        //Setup UEM link Header
+        var th1 = document.createElement("th"); 
+        th1.innerHTML = "UEM";
+        tr.appendChild(th1); //end UEM link header setup
 
         for (var i = 0; i < col.length; i++) {
             var th = document.createElement("th");      // TABLE HEADER.
@@ -243,6 +247,13 @@ function buildDeviceTable(filteredJson){
         for (var i = 0; i < filteredJson.length; i++) {
 
             tr = table.insertRow(-1);
+            //UEM Link ID Grab
+            var tabCellLink = tr.insertCell(-1);
+            var idObj = filteredJson[i][col[45]];
+            if(idObj.Value !== null){
+                    tabCellLink.innerHTML = idObj.Value;
+            } //End UEM Link setup
+
 
             for (var j = 0; j < col.length; j++) {
                 var tabCell = tr.insertCell(-1);
